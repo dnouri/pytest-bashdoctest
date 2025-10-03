@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/pytest-bashdoctest.svg)](https://pypi.org/project/pytest-bashdoctest/)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![CI Status](https://img.shields.io/github/actions/workflow/status/dnouri/pytest-bashdoctest/test.yml?branch=main)](https://github.com/dnouri/pytest-bashdoctest/actions)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/dnouri/pytest-bashdoctest/test.yml?branch=master)](https://github.com/dnouri/pytest-bashdoctest/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A pytest plugin for testing bash command examples in markdown documentation.
@@ -292,6 +292,16 @@ To skip pre-commit hooks (not recommended):
 ```bash
 git commit --no-verify -m "message"
 ```
+
+## Releasing
+
+Update `version` in `pyproject.toml`, then:
+
+```bash
+git tag v2025.10.4 && git push --tags
+```
+
+Publishes to PyPI automatically via GitHub Actions.
 
 ## License
 
