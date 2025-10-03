@@ -40,3 +40,6 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
+
+# uv - don't commit lock file for libraries
+uv.lock
