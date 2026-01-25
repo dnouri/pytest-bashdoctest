@@ -48,13 +48,15 @@ def execute_command(command: str, env: dict[str, str]) -> CommandResult:
     """
     full_env = {**os.environ, **env}
 
+    timeout = os.environ.get("PYTEST_BASHDOCTEST_TIMEOUT") or 30
+
     result = subprocess.run(
         command,
         shell=True,
         capture_output=True,
         text=True,
         env=full_env,
-        timeout=30,  # Prevent hanging
+        timeout=int(timeout),
     )
 
     return CommandResult(
