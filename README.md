@@ -198,6 +198,18 @@ $ curl -s "$API_URL/users" -H "Authorization: Bearer $API_KEY"
 
 The environment variables from your `bashdoctest_env` fixture are merged with `os.environ` when executing commands, so `$API_KEY` and `$API_URL` will be available to all bash examples.
 
+### Command Timeout
+
+By default, commands timeout after 30 seconds to prevent hanging. Override this with the `PYTEST_BASHDOCTEST_TIMEOUT` environment variable:
+
+```bash
+# Use default 30 second timeout
+pytest --bashdoctest API.md -v
+
+# Increase to 60 seconds for slow APIs
+PYTEST_BASHDOCTEST_TIMEOUT=60 pytest --bashdoctest API.md -v
+```
+
 ## How It Works
 
 1. Plugin activates when you pass `--bashdoctest` flag
@@ -234,7 +246,7 @@ pytest --bashdoctest README.md -v
 
 ## Limitations
 
-- Commands timeout after 30 seconds (configurable in `executor.py`)
+- Commands timeout after 30 seconds by default (override with `PYTEST_BASHDOCTEST_TIMEOUT` env var)
 - Interactive commands will hang
 - Uses `shell=True` (commands come from your trusted markdown files)
 - Output buffering may differ for very large responses
